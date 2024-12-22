@@ -1,3 +1,3 @@
-import { HELLO_WORLD } from './app';
+import { App } from './app';
 
-console.log(HELLO_WORLD);
+new App();

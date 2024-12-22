@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 public/js
+
+# MacOS
+.DS_Store

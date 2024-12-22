@@ -20,9 +20,28 @@
         text-align: center;
       }
 
-      canvas {
+      .ball-container {
         margin: 5rem auto;
         display: block;
+        border: 1px solid #333;
+      }
+
+      .video-container {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 640px;
+        height: 480px;
+      }
+
+      .webcam {
+        transform: scaleX(-1);
+      }
+
+      .face-mesh-container {
+        position: absolute;
+        left: 0;
+        top: 0;
         border: 1px solid #333;
       }
     </style>

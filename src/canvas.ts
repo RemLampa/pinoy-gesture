@@ -2,10 +2,16 @@ export class Canvas {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
 
-  constructor() {
+  constructor(
+    className: string = 'canvas',
+    container: HTMLElement = document.body,
+  ) {
     this.canvas = document.createElement('canvas');
+    this.canvas.className = className;
+
     this.ctx = this.canvas.getContext('2d');
-    document.body.appendChild(this.canvas);
+
+    container.appendChild(this.canvas);
   }
 
   public setWidth(width: number) {

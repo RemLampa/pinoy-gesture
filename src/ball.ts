@@ -1,4 +1,4 @@
-import { Canvas } from './canvas';
+import { Canvas } from './Canvas';
 
 export class Ball {
   private x: number;

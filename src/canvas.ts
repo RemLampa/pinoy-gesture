@@ -41,6 +41,10 @@ export class Canvas {
     this.canvas.addEventListener(type, listener);
   }
 
+  public clear() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
   public removeEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,

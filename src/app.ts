@@ -1,6 +1,7 @@
 import { Canvas } from './Canvas';
 import { Ball } from './Ball';
 import { Camera } from './Camera';
+import { FaceMesh } from './FaceMesh';
 
 const BALL_CONTAINER_WIDTH = 800;
 const BALL_CONTAINER_HEIGHT = 600;
@@ -80,6 +81,9 @@ export class App {
 
   // Enable the camera feed
   private async enableCamera(): Promise<void> {
-    await this.camera.start();
+    const faceMesh = new FaceMesh(this.faceMeshContainer);
+    await faceMesh.init();
+
+    await this.camera.start(faceMesh);
   }
 }

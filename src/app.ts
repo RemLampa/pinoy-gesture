@@ -15,8 +15,7 @@ export class App {
     this.canvas = new Canvas();
 
     this.canvas.setWidth(CANVAS_WIDTH);
-    this.canvas.setHeight(CANVAS_WIDTH);
-    this.canvas.getContext().fillStyle = 'black';
+    this.canvas.setHeight(CANVAS_HEIGHT);
 
     this.ball = new Ball(
       this.canvas,

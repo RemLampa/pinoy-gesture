@@ -27,4 +27,22 @@ export class Canvas {
   public getContext(): CanvasRenderingContext2D {
     return this.ctx;
   }
+
+  public addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+  ): void {
+    this.canvas.addEventListener(type, listener);
+  }
+
+  public removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+  ): void {
+    this.canvas.removeEventListener(type, listener);
+  }
+
+  public getBoundingClientRect(): DOMRect {
+    return this.canvas.getBoundingClientRect();
+  }
 }

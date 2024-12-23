@@ -1,4 +1,7 @@
-import { FaceLandmarker as FaceLandmarkerInterface } from '@mediapipe/tasks-vision';
+import {
+  FaceLandmarker as FaceLandmarkerInterface,
+  FaceLandmarkerResult,
+} from '@mediapipe/tasks-vision';
 import * as vision from '@mediapipe/tasks-vision';
 
 import { Canvas } from './Canvas';
@@ -43,7 +46,10 @@ export class FaceMesh {
     );
   }
 
-  public detectForVideo(videoElement: HTMLVideoElement): void {
+  public detectForVideo(
+    videoElement: HTMLVideoElement,
+    callback?: (results: FaceLandmarkerResult) => void,
+  ): void {
     if (!this.faceLandmarker) {
       return null;
     }
@@ -106,18 +112,36 @@ export class FaceMesh {
         );
         drawingUtils.drawConnectors(
           landmarks,
+          // left lip corner
+          [{ start: 61, end: 62 }],
+          { color: '#FF3030' },
+        );
+        drawingUtils.drawConnectors(
+          landmarks,
+          // right lip corner
+          [{ start: 291, end: 292 }],
+          { color: '#FF3030' },
+        );
+        drawingUtils.drawConnectors(
+          landmarks,
           FaceLandmarker.FACE_LANDMARKS_RIGHT_IRIS,
-          { color: '#E0E0E0' },
+          { color: '#FF3030' },
         );
         drawingUtils.drawConnectors(
           landmarks,
           FaceLandmarker.FACE_LANDMARKS_LEFT_IRIS,
-          { color: '#E0E0E0' },
+          { color: '#FF3030' },
         );
       }
       3;
     }
 
-    window.requestAnimationFrame(this.detectForVideo.bind(this, videoElement));
+    if (callback && typeof callback === 'function') {
+      callback(results);
+    }
+
+    window.requestAnimationFrame(
+      this.detectForVideo.bind(this, videoElement, callback),
+    );
   }
 }

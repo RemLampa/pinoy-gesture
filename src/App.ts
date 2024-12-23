@@ -86,6 +86,7 @@ export class App {
     const faceMesh = new FaceMesh(this.faceMeshContainer);
     await faceMesh.init();
 
+    // bring it all together
     await this.camera.start((video: HTMLVideoElement) =>
       faceMesh.detectForVideo(video, this.handleResults),
     );

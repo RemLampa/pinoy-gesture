@@ -42,25 +42,14 @@ export class App {
       BALL_COLOR,
     );
 
-    this.addMouseListeners();
-
-    this.animate();
-  }
-
-  // Add mousemove listener to update the ball's position
-  private addMouseListeners(): void {
-    this.ballContainer.addEventListener('mousemove', (event: MouseEvent) => {
-      const rect = this.ballContainer.getBoundingClientRect();
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
-      this.ball.updatePosition(mouseX, mouseY);
-    });
+    this.animateBall();
   }
 
   // Animation loop
-  private animate(): void {
+  private animateBall(): void {
     this.ball.draw();
-    requestAnimationFrame(() => this.animate());
+
+    requestAnimationFrame(() => this.animateBall());
   }
 
   private initWebcam(): void {
@@ -112,7 +101,7 @@ export class App {
     const rightMouthCorner = landmarks[291]; // Right corner of the mouth
     const rawHorizontalDistance = Math.sqrt(
       Math.pow(rightMouthCorner.x - leftMouthCorner.x, 2) +
-        Math.pow(rightMouthCorner.y - leftMouthCorner.y, 2),
+      Math.pow(rightMouthCorner.y - leftMouthCorner.y, 2),
     );
 
     // Normalize the horizontal distance using the distance scale

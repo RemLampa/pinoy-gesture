@@ -66,9 +66,6 @@ export class App {
   private initWebcam(): void {
     const videoContainer = document.createElement('div');
     videoContainer.className = 'video-container';
-    videoContainer.style.display = 'flex';
-    videoContainer.style.flexDirection = 'column';
-    videoContainer.style.alignItems = 'center';
 
     this.camera = new Camera(VIDEO_WIDTH, VIDEO_HEIGHT, videoContainer);
 

@@ -119,7 +119,6 @@ export class App {
 
     // Normalize the horizontal distance using the distance scale
     const normalizedHorizontalDistance = rawHorizontalDistance * distanceScale;
-    console.log(normalizedHorizontalDistance);
 
     // Define a dynamic puckering threshold
     const puckeringThreshold = 0.04; // Base threshold
@@ -136,17 +135,16 @@ export class App {
       const speedX =
         Math.sign(faceDirectionX) *
         Math.pow(Math.abs(faceDirectionX), 2) *
-        5 *
+        5000 *
         distanceScale;
       const speedY =
         Math.sign(faceDirectionY) *
         Math.pow(Math.abs(faceDirectionY), 2) *
-        5 *
+        500 *
         distanceScale;
 
       // Move the ball incrementally
-      // this.ball.updatePosition(speedX, speedY);
-      console.log('puckered');
+      this.ball.updatePosition(speedX, speedY);
     }
   };
 }

@@ -24,9 +24,19 @@ export class Ball {
   }
 
   // Method to update the ball's position
-  public updatePosition(mouseX: number, mouseY: number): void {
-    this.x = mouseX;
-    this.y = mouseY;
+  public updatePosition(deltaX: number, deltaY: number): void {
+    this.x -= deltaX;
+    this.y += deltaY;
+
+    // Keep ball within canvas boundaries
+    this.x = Math.max(
+      this.radius,
+      Math.min(this.canvas.getWidth() - this.radius, this.x),
+    );
+    this.y = Math.max(
+      this.radius,
+      Math.min(this.canvas.getHeight() - this.radius, this.y),
+    );
   }
 
   // Method to draw the ball

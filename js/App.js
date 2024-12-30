@@ -7,10 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Canvas } from './Canvas';
-import { Ball } from './Ball';
-import { Camera } from './Camera';
-import { FaceMesh } from './FaceMesh';
+import { Canvas } from './Canvas.js';
+import { Ball } from './Ball.js';
+import { Camera } from './Camera.js';
+import { FaceMesh } from './FaceMesh.js';
 const BALL_CONTAINER_WIDTH = 800;
 const BALL_CONTAINER_HEIGHT = 600;
 const BALL_RADIUS = 10;

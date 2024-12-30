@@ -5,6 +5,7 @@ import {
 import * as vision from '@mediapipe/tasks-vision';
 
 import { Canvas } from './Canvas';
+
 const { FaceLandmarker, FilesetResolver, DrawingUtils } = vision;
 
 export class FaceMesh {
@@ -12,8 +13,26 @@ export class FaceMesh {
 
   private faceLandmarker: FaceLandmarkerInterface;
 
+  private isVisible: Boolean = true;
+
+  private visibilityButton: HTMLButtonElement;
+
   constructor(canvas: Canvas) {
     this.canvas = canvas;
+
+    this.toggleVisibility = this.toggleVisibility.bind(this);
+
+    this.initVisibilityButton();
+  }
+
+  private initVisibilityButton(): void {
+    this.visibilityButton = document.createElement('button');
+
+    this.visibilityButton.addEventListener('click', this.toggleVisibility);
+
+    this.visibilityButton.textContent = 'Hide Mesh';
+
+    this.canvas.appendChild(this.visibilityButton);
   }
 
   /**
@@ -65,6 +84,20 @@ export class FaceMesh {
 
     this.canvas.clear();
 
+    if (this.isVisible) {
+      this.drawFaceMesh(results);
+    }
+
+    if (callback && typeof callback === 'function') {
+      callback(results);
+    }
+
+    window.requestAnimationFrame(
+      this.detectForVideo.bind(this, videoElement, callback),
+    );
+  }
+
+  private drawFaceMesh(results: FaceLandmarkerResult): void {
     const drawingUtils = new DrawingUtils(this.canvas.getContext());
 
     if (results.faceLandmarks) {
@@ -135,13 +168,13 @@ export class FaceMesh {
       }
       3;
     }
+  }
 
-    if (callback && typeof callback === 'function') {
-      callback(results);
-    }
+  public toggleVisibility(): void {
+    this.isVisible = !this.isVisible;
 
-    window.requestAnimationFrame(
-      this.detectForVideo.bind(this, videoElement, callback),
-    );
+    this.visibilityButton.textContent = this.isVisible
+      ? 'Hide Mesh'
+      : 'Show Mesh';
   }
 }

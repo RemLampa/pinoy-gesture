@@ -2,16 +2,21 @@ export class Canvas {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
 
+  private container: HTMLDivElement;
+
   constructor(
     className: string = 'canvas',
-    container: HTMLElement = document.body,
+    parentContainer: HTMLElement = document.body,
   ) {
-    this.canvas = document.createElement('canvas');
-    this.canvas.className = className;
+    this.container = document.createElement('div');
+    this.container.className = className;
 
+    this.canvas = document.createElement('canvas');
     this.ctx = this.canvas.getContext('2d');
 
-    container.appendChild(this.canvas);
+    this.container.appendChild(this.canvas);
+
+    parentContainer.appendChild(this.container);
   }
 
   public setWidth(width: number) {
@@ -54,5 +59,13 @@ export class Canvas {
 
   public getBoundingClientRect(): DOMRect {
     return this.canvas.getBoundingClientRect();
+  }
+
+  public appendChild(child: HTMLElement): void {
+    this.container.appendChild(child);
+  }
+
+  public removeChild(child: HTMLElement): void {
+    this.container.removeChild(child);
   }
 }

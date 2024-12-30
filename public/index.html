@@ -20,7 +20,7 @@
         text-align: center;
       }
 
-      .ball-container {
+      .ball-container canvas {
         margin: 5rem auto;
         display: block;
         border: 1px solid #333;
@@ -37,16 +37,29 @@
         align-items: center;
       }
 
+      .cta-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border: 1px solid #333;
+      }
+
       .webcam {
         transform: scaleX(-1);
       }
 
-      .face-mesh-container {
+      .face-mesh-container canvas {
         position: absolute;
         left: 0;
         top: 0;
         border: 1px solid #333;
         transform: scaleX(-1);
+      }
+
+      .face-mesh-container button {
+        position: absolute;
+        left: 0;
+        top: 0;
       }
     </style>
   </head>

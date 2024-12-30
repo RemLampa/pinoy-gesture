@@ -22,10 +22,47 @@ export class App {
 
   private camera: Camera;
 
+  // Define a dynamic puckering threshold
+  private puckerThreshold = 0.04;
+
   constructor() {
+    this.initPuckerThresholdInput();
+
     this.initBallContainer();
 
     this.initWebcam();
+  }
+
+  private initPuckerThresholdInput(): void {
+    const thresholdContainer = document.createElement('div');
+    thresholdContainer.className = 'pucker-threshold-container';
+
+    const puckerThresholdLabel = document.createElement('label');
+    puckerThresholdLabel.className = 'pucker-threshold-label';
+    puckerThresholdLabel.htmlFor = 'pucker-threshold';
+    puckerThresholdLabel.textContent = `Pucker Threshold: ${this.puckerThreshold}`;
+
+    thresholdContainer.appendChild(puckerThresholdLabel);
+
+    const puckerThresholdInput = document.createElement('input');
+    puckerThresholdInput.id = 'pucker-threshold';
+    puckerThresholdInput.type = 'range';
+    puckerThresholdInput.min = '0';
+    puckerThresholdInput.max = '0.1';
+    puckerThresholdInput.step = '0.001';
+    puckerThresholdInput.value = this.puckerThreshold.toString();
+
+    puckerThresholdInput.addEventListener('input', (event) => {
+      this.puckerThreshold = parseFloat(
+        (event.target as HTMLInputElement).value,
+      );
+
+      puckerThresholdLabel.textContent = `Pucker Threshold: ${this.puckerThreshold}`;
+    });
+
+    thresholdContainer.appendChild(puckerThresholdInput);
+
+    document.body.appendChild(thresholdContainer);
   }
 
   private initBallContainer(): void {
@@ -101,15 +138,13 @@ export class App {
     const rightMouthCorner = landmarks[291]; // Right corner of the mouth
     const rawHorizontalDistance = Math.sqrt(
       Math.pow(rightMouthCorner.x - leftMouthCorner.x, 2) +
-      Math.pow(rightMouthCorner.y - leftMouthCorner.y, 2),
+        Math.pow(rightMouthCorner.y - leftMouthCorner.y, 2),
     );
 
     // Normalize the horizontal distance using the distance scale
     const normalizedHorizontalDistance = rawHorizontalDistance * distanceScale;
 
-    // Define a dynamic puckering threshold
-    const puckeringThreshold = 0.04; // Base threshold
-    const isPuckered = normalizedHorizontalDistance < puckeringThreshold;
+    const isPuckered = normalizedHorizontalDistance < this.puckerThreshold;
 
     if (isPuckered) {
       // Calculate face orientation for ball movement

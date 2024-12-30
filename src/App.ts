@@ -1,9 +1,9 @@
 import { FaceLandmarkerResult } from '@mediapipe/tasks-vision';
 
-import { Canvas } from './Canvas';
-import { Ball } from './Ball';
-import { Camera } from './Camera';
-import { FaceMesh } from './FaceMesh';
+import { Canvas } from './Canvas.js';
+import { Ball } from './Ball.js';
+import { Camera } from './Camera.js';
+import { FaceMesh } from './FaceMesh.js';
 
 const BALL_CONTAINER_WIDTH = 800;
 const BALL_CONTAINER_HEIGHT = 600;
@@ -138,7 +138,7 @@ export class App {
     const rightMouthCorner = landmarks[291]; // Right corner of the mouth
     const rawHorizontalDistance = Math.sqrt(
       Math.pow(rightMouthCorner.x - leftMouthCorner.x, 2) +
-        Math.pow(rightMouthCorner.y - leftMouthCorner.y, 2),
+      Math.pow(rightMouthCorner.y - leftMouthCorner.y, 2),
     );
 
     // Normalize the horizontal distance using the distance scale

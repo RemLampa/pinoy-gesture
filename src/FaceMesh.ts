@@ -4,7 +4,7 @@ import {
 } from '@mediapipe/tasks-vision';
 import * as vision from '@mediapipe/tasks-vision';
 
-import { Canvas } from './Canvas';
+import { Canvas } from './Canvas.js';
 
 const { FaceLandmarker, FilesetResolver, DrawingUtils } = vision;
 

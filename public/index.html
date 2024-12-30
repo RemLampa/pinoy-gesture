@@ -13,22 +13,23 @@
         align-items: center;
         height: 100vh;
         background-color: #f0f0f0;
+        color: #333;
       }
 
-      h1 {
-        color: #333;
+      heading {
         text-align: center;
+        margin: 0 auto;
       }
 
       .pucker-threshold-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 1rem auto;
+        margin: auto;
       }
 
       .ball-container canvas {
-        margin: 5rem auto;
+        margin: 1rem auto;
         display: block;
         border: 1px solid #333;
       }
@@ -72,7 +73,15 @@
   </head>
 
   <body>
-    <h1>Pinoy Gesture Demo</h1>
+    <heading>
+      <h1>Pinoy Gesture Demo</h1>
+
+      <h2>Made with ❤️ by <a href="https://kuyadev.com">Kuya Dev</a></h2>
+
+      <p>
+        <a href="https://github.com/RemLampa/pinoy-gesture">Github Repo</a>
+      </p>
+    </heading>
 
     <script src="./js/index.js" type="module" async defer></script>
   </body>

@@ -21,6 +21,20 @@
         margin: 0 auto;
       }
 
+      details {
+        text-align: left;
+        margin: 1rem auto;
+        width: 640px;
+        padding: 1rem;
+        border: 1px solid #333;
+        border-radius: 0.5rem;
+        background-color: #fff;
+      }
+
+      summary {
+        cursor: pointer;
+      }
+
       .pucker-threshold-container {
         display: flex;
         justify-content: center;
@@ -76,11 +90,73 @@
     <heading>
       <h1>Pinoy Gesture Demo</h1>
 
-      <h2>Made with ❤️ by <a href="https://kuyadev.com">Kuya Dev</a></h2>
+      <details>
+        <summary>Why?</summary>
+        <div class="content">
+          <p>
+            Ask a local Filipino for directions, and more often than not, they
+            will use their lips to point.
+          </p>
 
-      <p>
-        <a href="https://github.com/RemLampa/pinoy-gesture">Github Repo</a>
-      </p>
+          <p>
+            It's a cultural quirk that's unique to the Philippines. And it's
+            something that's hard to explain to foreigners.
+          </p>
+
+          <p>
+            This meme project aims to demonstrate this gesture using a webcam
+            and facial landmark detection technology.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How?</summary>
+        <div class="content">
+          <p>
+            Needs browser camera permission to be granted, and only works for
+            modern browsers.
+          </p>
+
+          <p>
+            The direction of the movement of the ball is determined by where the
+            user is facing.
+          </p>
+
+          <p>
+            However, the ball will not move unless the user's lips are puckered
+            (i.e. shaped as if to do a kiss).
+          </p>
+
+          <p>
+            Since human lips are of different shapes and sizes, the pucker
+            threshold can be adjusted using the slider.
+          </p>
+
+          <p>
+            The face recognition mesh can be toggled between visible and hidden
+            using a button.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Code</summary>
+        <div class="content">
+          <p>Made with ❤️ by <a href="https://kuyadev.com">Kuya Dev</a></p>
+          <p>
+            <a href="https://www.github.com/RemLampa/pinoy-gesture">
+              Github Repo
+            </a>
+            &nbsp;|
+            <a
+              href="https://github.com/RemLampa/pinoy-gesture/blob/master/LICENSE"
+            >
+              MIT License
+            </a>
+          </p>
+        </div>
+      </details>
     </heading>
 
     <script type="importmap">
